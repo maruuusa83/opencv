@@ -714,8 +714,8 @@ void BestOf2NearestOfNeighborMatcher::operator ()(const std::vector<ImageFeature
     std::vector<std::pair<int,int> > near_pairs;
     for (int i = 0; i < num_images - 1; ++i)
         for (size_t j = 0; j < adjacencies_list_.size(); j++)
-            if (features[i].keypoints.size() > 0 && features[j].keypoints.size() > 0 && mask_(i, j))
-                near_pairs.push_back(std::make_pair(i, j));
+            if (features[i].keypoints.size() > 0 && features[adjacencies_list_[j]].keypoints.size() > 0 && mask_(i, adjacencies_list_[j]))
+                near_pairs.push_back(std::make_pair(i, adjacencies_list_[j]));
 
     pairwise_matches.resize(num_images * num_images);
     MatchPairsBody body(*this, features, pairwise_matches, near_pairs);
