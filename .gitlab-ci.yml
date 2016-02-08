@@ -10,10 +10,3 @@ build_job:
     - cmake -D CMAKE_INSTALL_PREFIX=$(python3 -c "import sys; print(sys.prefix)") -D WITH_OPENCL=off -D PYTHON_EXECUTABLE=$(which python3) ./
     - make -j4
 
-test_job:
-  stage: test
-  script:
-    - make test
-  only:
-    - omnidirectionalPicture
-
