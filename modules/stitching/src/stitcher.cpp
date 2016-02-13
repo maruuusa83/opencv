@@ -621,6 +621,10 @@ Stitcher::Status Stitcher::stitch(InputArrayOfArrays images, const std::vector<s
     return composePanorama(pano);
 }
 
+Stitcher::Status Stitcher::stitchOmnidirectionalPicture(InputArrayOfArrays images, std::vector< std::vector<int> > adjacencies_list, OutputArray pano)
+{
+    return OK;
+}
 
 Stitcher::Status Stitcher::matchImages()
 {
@@ -730,7 +734,6 @@ Stitcher::Status Stitcher::matchImages()
 
     return OK;
 }
-
 
 Stitcher::Status Stitcher::estimateCameraParams()
 {

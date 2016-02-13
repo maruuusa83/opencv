@@ -212,6 +212,8 @@ public:
      */
     Status stitch(InputArrayOfArrays images, const std::vector<std::vector<Rect> > &rois, OutputArray pano);
 
+    Status stitchOmnidirectionalPicture(InputArrayOfArrays images, std::vector< std::vector<int> > adjacencies_list, OutputArray pano);
+
     std::vector<int> component() const { return indices_; }
     std::vector<detail::CameraParams> cameras() const { return cameras_; }
     CV_WRAP double workScale() const { return work_scale_; }
