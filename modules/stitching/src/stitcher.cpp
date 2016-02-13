@@ -367,7 +367,6 @@ Stitcher::Status Stitcher::stitch(InputArrayOfArrays images, OutputArray pano)
     return composePanorama(pano);
 }
 
-
 Stitcher::Status Stitcher::stitch(InputArrayOfArrays images, const std::vector<std::vector<Rect> > &rois, OutputArray pano)
 {
     Status status = estimateTransform(images, rois);
@@ -378,13 +377,9 @@ Stitcher::Status Stitcher::stitch(InputArrayOfArrays images, const std::vector<s
 
 Stitcher::Status Stitcher::stitchOmnidirectionalPicture(InputArrayOfArrays images, std::vector< std::vector<int> > adjacencies_list, OutputArray pano)
 {
-    Status status = estimateTransform(images, rois);
-    if (status != OK)
-        return status;
+    this->setFeaturesMatcher(makePtr<detail::BestOf2NearestOfNeighborMatcher>(adjacencies_list);
 
-    status = composePanorama(pano);
-
-    return OK;
+    return this->stitch(images, pano);
 }
 
 Stitcher::Status Stitcher::matchImages()
