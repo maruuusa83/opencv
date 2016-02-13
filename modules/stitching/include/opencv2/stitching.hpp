@@ -198,9 +198,6 @@ public:
      */
     Status composePanorama(InputArrayOfArrays images, OutputArray pano);
 
-    Status composeOmnidirectional(OutputArray omnidirectional);
-    Status composeOmnidirectional(InputArrayOfArrays images, OutputArray omnidirectional);
-
     /** @overload */
     CV_WRAP Status stitch(InputArrayOfArrays images, OutputArray pano);
     /** @brief These functions try to stitch the given images.
