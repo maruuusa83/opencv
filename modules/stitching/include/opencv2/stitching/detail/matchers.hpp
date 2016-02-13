@@ -262,9 +262,22 @@ public:
     void operator ()(const std::vector<ImageFeatures> &features, std::vector<MatchesInfo> &pairwise_matches,
                      const cv::UMat &mask = cv::UMat());
 
-
 protected:
     int range_width_;
+};
+
+class CV_EXPORTS BestOf2NearestOfNeighborMatcher : public BestOf2NearestMatcher
+{
+public:
+    BestOf2NearestOfNeighborMatcher(std::vector< std::vector<int> > &adjacencies_list, bool try_use_gpu = false,
+                                    float match_conf = 0.3f, int num_matches_thresh1 = 6,
+                                    int num_matches_thresh2 = 6);
+
+    void operator ()(const std::vector<ImageFeatures> &features, std::vector<MatchesInfo> &pairwise_matches,
+                     const cv::UMat &mask = cv::UMat());
+
+protected:
+    std::vector< std::vector<int> > adjacencies_list_;
 };
 
 //! @} stitching_match
