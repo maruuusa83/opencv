@@ -377,7 +377,7 @@ Stitcher::Status Stitcher::stitch(InputArrayOfArrays images, const std::vector<s
 
 Stitcher::Status Stitcher::stitchOmnidirectionalPicture(InputArrayOfArrays images, std::vector< std::vector<int> > adjacencies_list, OutputArray pano)
 {
-    this->setFeaturesMatcher(makePtr<detail::BestOf2NearestOfNeighborMatcher>(adjacencies_list);
+    this->setFeaturesMatcher(makePtr<detail::BestOf2NearestOfNeighborMatcher>(adjacencies_list));
 
     return this->stitch(images, pano);
 }
