@@ -198,9 +198,6 @@ public:
      */
     Status composePanorama(InputArrayOfArrays images, OutputArray pano);
 
-    Status composeOmnidirectional(OutputArray omnidirectional);
-    Status composeOmnidirectional(InputArrayOfArrays images, OutputArray omnidirectional);
-
     /** @overload */
     CV_WRAP Status stitch(InputArrayOfArrays images, OutputArray pano);
     /** @brief These functions try to stitch the given images.
@@ -211,6 +208,8 @@ public:
     @return Status code.
      */
     Status stitch(InputArrayOfArrays images, const std::vector<std::vector<Rect> > &rois, OutputArray pano);
+
+    Status stitchOmnidirectionalPicture(InputArrayOfArrays images, std::vector< std::vector<int> > adjacencies_list, OutputArray pano);
 
     std::vector<int> component() const { return indices_; }
     std::vector<detail::CameraParams> cameras() const { return cameras_; }
