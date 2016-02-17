@@ -269,7 +269,7 @@ protected:
 class CV_EXPORTS BestOf2NearestOfNeighborMatcher : public BestOf2NearestMatcher
 {
 public:
-    BestOf2NearestOfNeighborMatcher(std::vector< std::vector<int> > &adjacencies_list, bool try_use_gpu = false,
+    BestOf2NearestOfNeighborMatcher(const std::vector< std::vector<int> > &adjacencies_list, bool try_use_gpu = false,
                                     float match_conf = 0.3f, int num_matches_thresh1 = 6,
                                     int num_matches_thresh2 = 6);
 
