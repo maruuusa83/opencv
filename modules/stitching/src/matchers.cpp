@@ -696,7 +696,7 @@ void BestOf2NearestRangeMatcher::operator ()(const std::vector<ImageFeatures> &f
 
 //////////////////////////////////////////////////////////////////////////////
 
-BestOf2NearestOfNeighborMatcher::BestOf2NearestOfNeighborMatcher(std::vector< std::vector<int> > &adjacencies_list, bool try_use_gpu, float match_conf, int num_matches_thresh1, int num_matches_thresh2): BestOf2NearestMatcher(try_use_gpu, match_conf, num_matches_thresh1, num_matches_thresh2)
+BestOf2NearestOfNeighborMatcher::BestOf2NearestOfNeighborMatcher(const std::vector< std::vector<int> > &adjacencies_list, bool try_use_gpu, float match_conf, int num_matches_thresh1, int num_matches_thresh2): BestOf2NearestMatcher(try_use_gpu, match_conf, num_matches_thresh1, num_matches_thresh2)
 {
     adjacencies_list_ = adjacencies_list;
 }
