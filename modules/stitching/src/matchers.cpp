@@ -387,6 +387,16 @@ void SurfFeaturesFinder::find(InputArray image, ImageFeatures &features)
     }
 }
 
+AkazeFeaturesFinder::AkazeFeaturesFinder()
+{
+    // TODO: implement something to do
+}
+
+void AkazeFeaturesFinder::find(InputArray image, ImageFeatures &features)
+{
+    // TODO: implement something to do
+}
+
 OrbFeaturesFinder::OrbFeaturesFinder(Size _grid_size, int n_features, float scaleFactor, int nlevels)
 {
     grid_size = _grid_size;

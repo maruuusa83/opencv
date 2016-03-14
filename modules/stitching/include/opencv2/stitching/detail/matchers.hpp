@@ -115,6 +115,19 @@ private:
     Ptr<Feature2D> surf;
 };
 
+/** @brief AKAZE features finder.
+
+@sa detail::FeaturesFinder, AKAZE
+*/
+class CV_EXPORTS AkazeFeaturesFinder : public FeaturesFinder
+{
+public:
+    AkazeFeaturesFinder();
+
+private:
+    void find(InputArray image, ImageFeatures &features);
+};
+
 /** @brief ORB features finder. :
 
 @sa detail::FeaturesFinder, ORB
