@@ -397,7 +397,7 @@ AkazeFeaturesFinder::AkazeFeaturesFinder(int descriptor_type, int descriptor_siz
 void AkazeFeaturesFinder::find(InputArray image, ImageFeatures &features)
 {
     UMat descriptors;
-    akaze->detectAndCompute(image, Mat(), features.keypoints, features.desctiptors, false);
+    akaze->detectAndCompute(image, Mat(), features.keypoints, features.descriptors, false);
     // features.descriptors = descriptors.reshape(1, (int)features.keypoints.size());
 }
 
