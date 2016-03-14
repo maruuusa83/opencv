@@ -396,9 +396,20 @@ AkazeFeaturesFinder::AkazeFeaturesFinder(int descriptor_type, int descriptor_siz
 
 void AkazeFeaturesFinder::find(InputArray image, ImageFeatures &features)
 {
-    UMat descriptors;
-    akaze->detectAndCompute(image, Mat(), features.keypoints, features.descriptors, false);
-    // features.descriptors = descriptors.reshape(1, (int)features.keypoints.size());
+    UMat gray_image;
+    CV_Assert((image.type() == CV_8UC3) || (image.type() == CV_8UC1));
+    if(image.type() == CV_8UC3)
+    {
+        cvtColor(image, gray_image, COLOR_BGR2GRAY);
+    }
+    else
+    {
+        gray_image = image.getUMat();
+    }
+
+    Mat descriptors;
+    akaze->detectAndCompute(image, Mat(), features.keypoints, descriptors, false);
+    descriptors.copyTo(features.descriptors);
 }
 
 OrbFeaturesFinder::OrbFeaturesFinder(Size _grid_size, int n_features, float scaleFactor, int nlevels)
