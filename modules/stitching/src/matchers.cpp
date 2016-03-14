@@ -397,8 +397,8 @@ AkazeFeaturesFinder::AkazeFeaturesFinder(int descriptor_type, int descriptor_siz
 void AkazeFeaturesFinder::find(InputArray image, ImageFeatures &features)
 {
     UMat descriptors;
-    akaze->detectAndCompute(image, Mat(), features.keypoints, descriptors, false);
-    features.descriptors = descriptors.reshape(1, (int)features.keypoints.size());
+    akaze->detectAndCompute(image, Mat(), features.keypoints, features.desctiptors, false);
+    // features.descriptors = descriptors.reshape(1, (int)features.keypoints.size());
 }
 
 OrbFeaturesFinder::OrbFeaturesFinder(Size _grid_size, int n_features, float scaleFactor, int nlevels)
