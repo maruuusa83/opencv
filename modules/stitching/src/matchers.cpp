@@ -387,6 +387,31 @@ void SurfFeaturesFinder::find(InputArray image, ImageFeatures &features)
     }
 }
 
+AkazeFeaturesFinder::AkazeFeaturesFinder(int descriptor_type, int descriptor_size, int descriptor_channels,
+                                         float threshold, int nOctaves, int nOctaveLayers, int diffusivity)
+{
+    akaze = AKAZE::create(descriptor_type, descriptor_size, descriptor_channels,
+                          threshold, nOctaves, nOctaveLayers, diffusivity);
+}
+
+void AkazeFeaturesFinder::find(InputArray image, ImageFeatures &features)
+{
+    UMat gray_image;
+    CV_Assert((image.type() == CV_8UC3) || (image.type() == CV_8UC1));
+    if(image.type() == CV_8UC3)
+    {
+        cvtColor(image, gray_image, COLOR_BGR2GRAY);
+    }
+    else
+    {
+        gray_image = image.getUMat();
+    }
+
+    Mat descriptors;
+    akaze->detectAndCompute(image, Mat(), features.keypoints, descriptors, false);
+    descriptors.copyTo(features.descriptors);
+}
+
 OrbFeaturesFinder::OrbFeaturesFinder(Size _grid_size, int n_features, float scaleFactor, int nlevels)
 {
     grid_size = _grid_size;

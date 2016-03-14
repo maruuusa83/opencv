@@ -112,6 +112,7 @@ public:
     @return Stitcher class instance.
      */
     static Stitcher createDefault(bool try_use_gpu = false);
+    static Stitcher createWithAkaze(bool try_use_gpu = false);
 
     CV_WRAP double registrationResol() const { return registr_resol_; }
     CV_WRAP void setRegistrationResol(double resol_mpx) { registr_resol_ = resol_mpx; }
