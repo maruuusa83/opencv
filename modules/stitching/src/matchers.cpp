@@ -388,7 +388,7 @@ void SurfFeaturesFinder::find(InputArray image, ImageFeatures &features)
 }
 
 AkazeFeaturesFinder::AkazeFeaturesFinder(int descriptor_type, int descriptor_size, int descriptor_channels,
-                                         float threshold, int nOctaves, int nOctaveLayers, int diffusivity);
+                                         float threshold, int nOctaves, int nOctaveLayers, int diffusivity)
 {
     akaze = AKAZE::create(descriptor_type, descriptor_size, descriptor_channels,
                           threshold, nOctaves, nOctaveLayers, diffusivity);
