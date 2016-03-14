@@ -90,6 +90,24 @@ Stitcher Stitcher::createDefault(bool try_use_gpu)
     return stitcher;
 }
 
+Stitcher Stitcher::createWithAkaze(bool try_use_gpu)
+{
+    Stitcher stitcher = createDefault(try_use_gpu);
+
+#ifdef HAVE_CUDA
+    if (try_use_gpu && cuda::getCudaEnabledDeviceCount() > 0)
+    {
+        stitcher.setFeaturesFinder(makePtr<detail::AkazeFeaturesFinder>());
+    }
+    else
+#endif
+    {
+        stitcher.setFeaturesFinder(makePtr<detail::AkazeFeaturesFinder>());
+    }
+
+    return stitcher;
+}
+
 
 Stitcher::Status Stitcher::estimateTransform(InputArrayOfArrays images)
 {
